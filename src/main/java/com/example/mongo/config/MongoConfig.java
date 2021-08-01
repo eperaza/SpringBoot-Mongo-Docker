@@ -8,19 +8,24 @@ import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
 
 @Configuration //config for Mongo template
 public class MongoConfig extends AbstractMongoClientConfiguration {
     
+    @Value("${spring.data.mongodb.host}")
+    private String connString;
+    
+
     @Override
     protected String getDatabaseName() {
         return "admin";
     }
     @Override
     public MongoClient mongoClient() {
-        ConnectionString connectionString = new ConnectionString("mongodb://ec2-52-39-1-101.us-west-2.compute.amazonaws.com:27017/admin");
+        ConnectionString connectionString = new ConnectionString("mongodb://"+connString+":27017/admin");
         MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
             .applyConnectionString(connectionString)
             .build();

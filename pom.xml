@@ -142,6 +142,7 @@
 				</executions>
 			</plugin>
 		</plugins>
+		<finalName>mongo-junit-docker</finalName>
 	</build>
 
 </project>

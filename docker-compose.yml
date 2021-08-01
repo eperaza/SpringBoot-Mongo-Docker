@@ -1,0 +1,17 @@
+version: '3'
+services:
+    mongoapp:
+        build: .
+        container_name: mongoapp
+        ports:
+            - "8087:8087"
+    mongodb:
+        image: mongo
+        container_name: mongodb
+    jenkins:
+        image: jenkins/jenkins
+        container_name: jenkins
+        ports:
+            - "9000:8080"
+    
+ 
