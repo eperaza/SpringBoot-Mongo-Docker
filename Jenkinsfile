@@ -15,8 +15,16 @@ pipeline {
 
         stage ("Test") {
             steps {
-                sh "mvn test verify"
-                echo "Testing..."
+                script{
+                    try{
+                        sh "mvn test"
+                        echo "Testing..."
+                    }
+                    catch(error){
+                        echo error.getMessage()
+                    }
+                    
+                }
             }
         }
 
@@ -39,8 +47,17 @@ pipeline {
         
         stage ("Deploy") {
             steps {
-                sh "mvn install"
-                sh "docker-compose up"
+                script{
+                    try{
+                        sh "mvn install"
+                        sh "docker-compose up"
+                    }
+                    catch(error){
+                        echo error.getMessage()
+                    }
+                    
+                }
+                
             }
         }
     }
