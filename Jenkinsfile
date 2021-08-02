@@ -40,7 +40,7 @@ pipeline {
         stage ("Deploy") {
             steps {
                 sh "mvn install"
-                sh "./docker-compose up --build"
+                sh "sudo docker-compose up"
             }
         }
     }
