@@ -39,8 +39,8 @@ pipeline {
         
         stage ("Deploy") {
             steps {
-                sh "docker-compose up"
-                
+                sh "mvn install"
+                sh "./docker-compose up --build"
             }
         }
     }
