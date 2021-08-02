@@ -5,11 +5,19 @@ pipeline {
         
     }
     stages {
-
+        /*
         stage ("Build") {
             steps {
-                sh "mvn clean"
-                echo "Building..."
+                script{
+                    try{
+                        sh "mvn clean"
+                        echo "Building..."
+                    }
+                    catch(error){
+                        echo error.getMessage()
+                    }
+                
+                }
             }
         }
 
@@ -27,7 +35,7 @@ pipeline {
                 }
             }
         }
-
+        */
         stage("SonarQube Quality Gate Check"){
             steps{
                 script{
