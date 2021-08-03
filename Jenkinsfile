@@ -58,7 +58,7 @@ pipeline {
                 script{
                     try{
                         sh "mvn install"
-                        sh "docker-compose up"
+                        sh "docker-compose up -d"
                     }
                     catch(error){
                         echo error.getMessage()
