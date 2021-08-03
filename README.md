@@ -5,8 +5,16 @@ test build with Jenkins...
 # Run Jenkins and Sonar on testing server
 sudo docker container run -d -p 8080:8080 \
     -v jenkins:/var/jenkins_home \
+    -v /var/run/docker.sock:/var/run/docker.sock \
     --name jenkins \
     jenkins/jenkins:lts-jdk11
+
+docker run -it -p 8080:8080 -p 50000:50000 \
+    -v jenkins_home:/var/jenkins_home \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    --restart unless-stopped \
+    --name jenkins \
+    4oh4/jenkins-docker
 
 sudo docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 -v sonarqube-conf:/opt/sonarqube/conf -v sonarqube-data:/opt/sonarqube/data -v sonarqube-logs:/opt/sonarqube/logs -v sonarqube-extensions:/opt/sonarqube/extensions sonarqube
 

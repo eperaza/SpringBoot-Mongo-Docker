@@ -5,7 +5,7 @@ pipeline {
         
     }
     stages {
-        /*
+        
         stage ("Build") {
             steps {
                 script{
@@ -35,7 +35,7 @@ pipeline {
                 }
             }
         }
-        */
+        /*
         stage("SonarQube Quality Gate Check"){
             steps{
                 script{
@@ -52,7 +52,7 @@ pipeline {
                 }
             }
         }
-        
+        */
         stage ("Deploy") {
             steps {
                 script{
